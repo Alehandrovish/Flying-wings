@@ -1,0 +1,688 @@
+@import "../css/null.css";
+
+@font-face {
+    font-family: Arsenal;
+    src: url(../font/ArsenalSC-Regular.ttf);
+}
+@font-face {
+    font-family: Arsenal-Bold;
+    src: url(../font/ArsenalSC-Bold.ttf);
+}
+@font-face {
+    font-family: Arsenal-Italic;
+    src: url("../font/ArsenalSC-Italic.ttf");
+}
+
+$threehundred: 300px;
+$hundred: 100px;
+$seventyFive: 75px;
+$fifty: 50px;
+$theerty: 30px;
+
+@mixin fontSizeColorShadow($font, $size, $color, $text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7)) {
+    font-family: $font;
+    font-size: $size;
+    color: $color;
+    text-shadow: $text-shadow;
+}
+@mixin title(
+    $display: inline-block,
+    $position: relative,
+    $text-align: center,
+    $padding-top: 70px,
+    $padding-bottom: 20px,
+    $margin: 0 auto
+) {
+    display: $display;
+    position: $position;
+    text-align: $text-align;
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+    margin: $margin;
+}
+@mixin titleAbout(
+    $content: "",
+    $display: block,
+    $width: 200px,
+    $height: 2px,
+    $background-color: black,
+    $margin: 4px auto 0,
+    $position: relative
+) {
+    content: $content;
+    display: $display;
+    width: $width;
+    height: $height;
+    background-color: $background-color;
+    margin: $margin;
+    position: $position;
+}
+
+html {
+    font-size: 16px;
+    z-index: 1;
+    height: auto;
+}
+body.lock {
+    overflow: hidden;
+}
+/*.test{
+    position: sticky;
+    top: 0;
+    height: 200px;
+    width: 100%;
+    background-color: aquamarine;
+}*/
+.head {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 70px;
+    .headbar {
+        background-color: rgb(44, 39, 39);
+        z-index: 1;
+        &__container {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        &__navigation {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        &__item {
+            font-family: Arsenal;
+            text-align: center;
+            color: rgb(242, 253, 255);
+            font-size: 2rem;
+            margin: 0;
+            &:hover {
+                cursor: default;
+                color: gray;
+                transition: 0.3s linear;
+            }
+        }
+    }
+}
+.logo {
+    &__container {
+        background-image: url("../img/backgrounds/carInGarage.png");
+        height: 1024px;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    &__image {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    &__title {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+    }
+}
+.logo-itself {
+    height: $threehundred;
+    width: $threehundred;
+    margin: 50px auto 10px auto;
+}
+.itemLogo-title {
+    @include fontSizeColorShadow(Arsenal-Bold, 7rem, white);
+}
+.itemLogo-subtitle {
+    @include fontSizeColorShadow(Arsenal, 4.6rem, white);
+}
+.service {
+    &__container {
+        background: black;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 30px;
+        height: 500px;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 50px;
+    }
+    &__title {
+        @include fontSizeColorShadow(Arsenal-Bold, 3rem, white);
+        @include title();
+        &::after {
+            @include titleAbout($background-color: white);
+        }
+    }
+    &__content {
+        display: inherit;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        align-content: space-between;
+        margin: 0 auto;
+    }
+    &__column {
+        max-width: 26.6666667%;
+        display: inherit;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        align-self: flex-start;
+    }
+}
+.item-service__logo {
+    height: $hundred;
+    width: $hundred;
+}
+.item-service__title {
+    @include fontSizeColorShadow(Arsenal-Bold, 2rem, white);
+}
+.item-service__text {
+    @include fontSizeColorShadow(Arsenal, 1.4rem, white);
+    text-align: center;
+}
+
+.works {
+    &__container {
+        width: 100%;
+        padding-top: $theerty;
+        padding-bottom: $theerty;
+        margin: 0 auto;
+        text-align: center;
+    }
+    &__title {
+        @include fontSizeColorShadow(Arsenal-Bold, 3rem, black);
+        @include title();
+        &::after {
+            @include titleAbout();
+        }
+    }
+    &__text {
+        @include fontSizeColorShadow(Arsenal, 2rem, black, rgba(0, 0, 0));
+        padding-bottom: 20px;
+    }
+    &__content {
+        width: 70%;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        padding-bottom: 30px;
+    }
+}
+.item-works {
+    display: flex;
+    flex: 0 0 33.33%;
+    position: relative;
+    z-index: 50;
+    border: 2px solid black;
+    &__img {
+        cursor: pointer;
+        flex: 0 0 100%;
+        height: 100%;
+        width: 100%;
+        z-index: 24;
+    }
+    &__description {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        z-index: 25;
+        visibility: visible;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        transition: 0.3s linear;
+        gap: 25px;
+        cursor: pointer;
+        background-color: rgba(207, 207, 207, 0.7);
+        &:hover {
+            opacity: 1;
+        }
+    }
+    &__title {
+        @include fontSizeColorShadow(Arsenal-Bold, 3rem, black, $text-shadow: rgba(0, 0, 0, 0));
+    }
+    &__text {
+        @include fontSizeColorShadow(Arsenal, 1.5rem, black, $text-shadow: rgba(0, 0, 0, 0));
+    }
+    &__icons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: auto;
+    }
+}
+.icons__item {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    &.text {
+        position: absolute;
+        bottom: 50px;
+        left: 75px;
+        visibility: hidden;
+        @include fontSizeColorShadow(Arsenal, 1.3rem, black, -shadow);
+        &.active {
+            visibility: visible;
+        }
+    }
+
+    &:hover {
+        opacity: 0.6;
+    }
+    &:first-child {
+        bottom: $fifty;
+        left: $fifty;
+    }
+    &:last-child {
+        bottom: $fifty;
+        right: $fifty;
+    }
+}
+
+.works {
+    &__blackScreen {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: black;
+        opacity: 0.5;
+        z-index: 1000;
+        visibility: hidden;
+        &.active {
+            visibility: visible;
+        }
+    }
+
+    &__share {
+        width: 40%;
+        height: 30%;
+        position: fixed;
+        top: 40%;
+        left: 30%;
+        background-color: white;
+        z-index: 1000;
+        visibility: hidden;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        &.active {
+            visibility: visible;
+        }
+        &__cross {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: $fifty;
+            height: $fifty;
+            cursor: pointer;
+        }
+        &__icons {
+            display: flex;
+            flex-direction: row;
+            width: 60%;
+            height: 40%;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &__item {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+        &__link {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 40%;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+        }
+        &__area {
+            height: $fifty;
+            border: 2px solid black;
+            padding-left: 15px;
+            font-size: 1.3rem;
+            align-self: flex-start;
+            color: gray;
+        }
+        &__button {
+            width: $seventyFive;
+            height: $fifty;
+            align-self: flex-start;
+            background-color: black;
+            &__image {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+}
+.sweep-description {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 999;
+    visibility: hidden;
+    transition: 0.5s linear;
+    opacity: 0;
+    &.active {
+        visibility: visible;
+        transition: 0s linear;
+        opacity: 1;
+    }
+    &__icons {
+        display: flex;
+        flex-direction: row;
+        padding-top: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+    &__fullscren-social {
+        display: flex;
+        display: flex;
+        gap: 5%;
+        &__item {
+            height: 50px;
+            width: 50px;
+        }
+        &__like_share {
+            height: 25px;
+            width: 25px;
+            align-self: center;
+            @include fontSizeColorShadow(Arsenal, 1.5rem, black, -shadow);
+            &.text {
+                visibility: hidden;
+                &.active {
+                    visibility: visible;
+                }
+            }
+        }
+    }
+    &__content {
+        max-width: 100vw;
+        max-height: 100vh;
+        padding: 0 5%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 50px;
+        justify-content: center;
+        &-image {
+            flex: 1 1 80%;
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            gap: 5%;
+            &.zoom{
+                position: fixed;
+                top: 0;
+                justify-content: center;
+                align-items: center;
+                flex: 0 0 0;
+            }
+        }
+        &-description {
+            flex: 1 1 40%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            padding: 5% 0;
+            gap: 5%;
+            &.zoom{
+            position: fixed;
+            right: -100%;
+            top: 0;
+            }
+        }
+    }
+    &__main-image {
+        max-width: 700px;
+        max-height: 700px;
+        &.zoom{
+            max-width: 100vw;
+            max-height: 100vh;
+            }
+    }
+    &__arrow-left {
+        align-self: center;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        visibility: hidden;
+        opacity: 0;
+        &.active {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    &__arrow-right {
+        align-self: center;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        visibility: hidden;
+        opacity: 0;
+        &.active {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    &__title {
+        @include fontSizeColorShadow(Arsenal-Bold, 3rem, black, -shadow);
+    }
+    &__text {
+        @include fontSizeColorShadow(Arsenal, 1.5rem, black, -shadow);
+    }
+}
+
+.about {
+    &__container {
+        width: 100%;
+        height: 800px;
+        background-image: url("../img/icons-service/keys.png");
+        opacity: 0.9;
+        background-size: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    &__content {
+        background-color: white;
+        opacity: 0.9;
+        display: flex;
+        flex: 0 0 50%;
+        flex-direction: column;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    &__title {
+        @include fontSizeColorShadow(Arsenal-Bold, 3rem, black);
+        @include title();
+        &::after {
+            @include titleAbout();
+        }
+    }
+    &__text {
+        @include fontSizeColorShadow(Arsenal-Italic, 1.5rem, black, $text-shadow: rgba(0, 0, 0, 0));
+        padding-bottom: 20px;
+        text-align: center;
+    }
+}
+.background-img {
+    &__image {
+        width: 100%;
+    }
+}
+.contacts {
+    &__container {
+        background-image: url(../img/icons-service/keys.png);
+        opacity: 0.9;
+        background-size: 100px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        height: 800px;
+    }
+    &__title {
+        @include fontSizeColorShadow(Arsenal-Bold, 3rem, black);
+        @include title();
+        &::after {
+            @include titleAbout();
+        }
+    }
+    &__content {
+        background-color: white;
+        opacity: 0.9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: space-around;
+        max-width: 600px;
+    }
+    &__columns {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    &__column {
+        display: inherit;
+        flex-direction: column;
+        text-align: left;
+        justify-content: space-around;
+        align-items: center;
+        gap: $theerty;
+        padding: 5%;
+        width: 50%;
+    }
+    &__text {
+        @include fontSizeColorShadow(Arsenal, 1.5rem, black, $text-shadow: rgba(0, 0, 0, 0));
+        display: flex;
+        align-self: flex-start;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    }
+}
+.item-form {
+    &__text {
+        @include fontSizeColorShadow(Arsenal-Italic, 1.5rem, black, $text-shadow: rgba(0, 0, 0, 0));
+        align-self: flex-start;
+    }
+    &__enter {
+        width: 100%;
+        height: 2rem;
+        border: 2px solid black; //solid-звичайний,dashed-пунктирна лінія, dotted-крапкова лінія, double-подвійна лінія, groove-видається, ніби втиснута, ridge-видається, ніби випукла,
+        //inset-виглядає так, ніби елемент втиснутий у вміст, outset-виглядає так, ніби елемент випирає назовні;
+        padding-left: 15px;
+        font-size: 1.3rem;
+        &:hover {
+            border: 3px solid gray;
+        }
+        &.error{
+            background-color: rgb(252, 161, 161);
+            border-color: red;
+        }
+    }
+    &__enterArea {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        height: 5rem;
+        min-height: 5rem;
+        max-height: 10rem;
+        border: 2px solid black;
+        padding-left: 15px;
+        font-size: 1.3rem;
+        &:hover {
+            border: 3px solid gray;
+        }
+    }
+    &__button {
+        background-color: black;
+        width: 100%;
+        height: 2rem;
+        color: white;
+        font-size: 1.3rem;
+        &:hover {
+            background-color: gray;
+            transition: 0.3s linear;
+        }
+    }
+}
+.footbar {
+    &__container {
+        width: 100%;
+        height: $fifty;
+        background-color: black;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__text {
+        @include fontSizeColorShadow(Arsenal-Italic, 1.2rem, white, $text-shadow: rgba(0, 0, 0, 0));
+    }
+}
+
+@media (max-width: 1025px) {
+    html {
+        font-size: 12px;
+    }
+    .item-works {
+        flex: 0 0 50%;
+    }
+}
